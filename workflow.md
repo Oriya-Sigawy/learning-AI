@@ -20,8 +20,6 @@ Code is an implementation of these documents and must remain aligned with them.
 
 # PHASE 1 - PROJECT SETUP
 
-Complete this phase before starting any assignment.
-
 ## Step 1 - Initialize Repository And Connection To Speckit.
 
 ## Step 2 - Create claude.md
@@ -34,7 +32,7 @@ Claude acts as:
 
 > Senior Python Software Engineer responsible for planning, implementation, testing, architecture, security, documentation and maintainability.
 
-## Global Rules
+### Global Rules
 
 Claude must:
 
@@ -47,7 +45,7 @@ Claude must:
 * Consider security, testing and performance.
 * Ask questions when requirements are unclear.
 
-## Development Methodology
+### Development Methodology
 
 This project follows Specification-Driven Development (SDD).
 
@@ -62,7 +60,7 @@ Rules:
 - Requirements and specifications must be updated before changing implementation behavior.
 - No coding is allowed until requirements, specification, and plan have been reviewed and approved.
 
-## Project Documents
+### Project Documents
 
 Document the purpose of:
 
@@ -72,7 +70,7 @@ Document the purpose of:
 * tasks.md
 * README.md
 
-## Add to Claude.md
+### Add to Claude.md
 
 Before implementing anything:
 

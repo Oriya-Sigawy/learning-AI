@@ -107,6 +107,7 @@ Before implementing any task:
 
 Tests must be derived from plan.md and requirements, not from implementation details.
 Never implement behavior before tests exist.
+Look again on the workflow, update it if needed.
 
 ---
 
@@ -170,6 +171,9 @@ Keep every skill:
 * Reusable
 * Generic
 * Checklist based
+
+Limit the skill's ability by specifing "allow-tools" where needed.
+Make the tool's description informative and close to the pronpt that should trigger it (make claude understand it should be used now).
 
 ---
 
@@ -352,6 +356,13 @@ Update `claude.md` to reference all skills and hooks.
 
 ## Step 6 - Validate Skills
 
+After creating skill -> restart claude, and ask "what skills are available?"
+
+Use:
+```
+uv sync
+skill-ref validate <path-to-skill>
+```
 For every skill:
 
 ### Ask
@@ -369,10 +380,6 @@ Update the skill if needed.
 ---
 
 ## Step 1 - Import Assignment
-
-Copy the assignment into the project.
-
-Do not implement anything.
 
 ---
 
@@ -771,6 +778,13 @@ Consider using subagents for:
 * Performance review
 * Deep investigation
 
+Subagent does not see your skills. If you want it to know about thenm, you should define a custom subagent, and under "skills" put the skills it needs. The location of the custom agent will be under .claude/agents.  
+
+Define:
+- Structed output
+- Report in issues that interrupt it
+- Specific and exact description
+- Limit access - only the tool it needs.
 ---
 
 ## MCP

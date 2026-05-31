@@ -1,29 +1,28 @@
 <!--
 Sync Impact Report
 ==================
-Version change: (template / unversioned) → 1.0.0
-Rationale: Initial ratification of the project constitution (MAJOR baseline).
+Version change: 1.0.0 → 2.0.0
+Rationale: Consolidated principles to remove redundancy. Merged former "II. Plan
+Before Implementation" and "VII. Specification-Driven Development (SDD) First"
+into a single principle ("II. Specification-Driven Development"), since both
+governed the same Requirements→...→Implementation pipeline. The canonical
+pipeline is now stated once (in Development Workflow) and referenced elsewhere.
+Principle removal/redefinition makes this a MAJOR bump per the versioning policy.
 
-Modified principles: N/A (initial adoption)
-Added principles:
-  - I. Requirements First
-  - II. Plan Before Implementation
-  - III. Test Before Implementation (NON-NEGOTIABLE)
-  - IV. Simplicity Over Complexity
-  - V. Security By Default
-  - VI. Maintainability Over Cleverness
-  - VII. Specification-Driven Development (SDD) First
-Added sections:
-  - Mandatory Review Gates
-  - Development Workflow
-  - Governance
+Modified principles:
+  - II. Plan Before Implementation + VII. SDD First → II. Specification-Driven Development
+Removed principles:
+  - VII. Specification-Driven Development (SDD) First (folded into II)
+Renumbered:
+  - III→III, IV→IV, V→V, VI→VI (unchanged content; principle count 7 → 6)
+Added sections: N/A
 Removed sections: N/A
 
 Templates requiring updates:
   - .specify/templates/plan-template.md ✅ aligned (Constitution Check gate references this file)
   - .specify/templates/spec-template.md ✅ aligned (Requirements + Success Criteria are mandatory)
-  - .specify/templates/tasks-template.md ⚠ pending — line 12 states tests are OPTIONAL, which
-    conflicts with Principle III (TDD NON-NEGOTIABLE). Recommend making test tasks mandatory.
+  - .specify/templates/tasks-template.md ✅ aligned — test tasks are mandatory and
+    residual "if included / if requested" hedges removed, consistent with Principle III.
 
 Follow-up TODOs: None.
 -->
@@ -47,18 +46,19 @@ If requirements are unclear, work MUST stop and seek clarification before procee
 **Rationale**: Acting on unstated assumptions produces scope creep and rework. Explicit
 requirements are the only authorized source of work.
 
-### II. Plan Before Implementation
+### II. Specification-Driven Development
 
-Implementation is NOT allowed until planning is complete.
+Every change MUST flow through the authorized workflow (see Development Workflow). Implementation
+is NOT allowed until the planning artifacts for that workflow exist and have been reviewed.
 
-Required workflow:
+- Production code MUST NOT be written before reviewed planning artifacts exist.
+- Implementation MUST NEVER bypass the workflow.
+- When implementation conflicts with requirements, specifications, or plans, the planning
+  documents are the source of truth.
 
-Requirements → Specification → Plan → Review → Tasks → Tests → Implementation
-
-Production code MUST NOT be written before planning artifacts exist and have been reviewed.
-
-**Rationale**: A reviewed plan catches design problems while they are cheap to fix and keeps
-implementation traceable to intent.
+**Rationale**: A single authoritative pipeline keeps the project coherent, catches design
+problems while they are cheap to fix, and ensures documented intent—not ad hoc code—governs the
+system.
 
 ### III. Test Before Implementation (NON-NEGOTIABLE)
 
@@ -69,11 +69,7 @@ Rules:
 - Tests MUST be written before implementation.
 - Tests MUST be derived from requirements and `plan.md`.
 - Tests MUST validate behavior, not implementation details.
-- New functionality MUST have tests before implementation begins.
-
-Required workflow:
-
-Plan → Tests → Verify Expected Failure → Implementation → Verify Tests Pass
+- New functionality MUST have tests, observed failing, before implementation begins.
 
 **Rationale**: Writing tests first forces clear behavioral contracts and prevents code that is
 untestable or untested from entering the project.
@@ -131,18 +127,6 @@ A future maintainer SHOULD be able to understand the project quickly.
 
 **Rationale**: Code is read far more often than it is written; clarity outlasts cleverness.
 
-### VII. Specification-Driven Development (SDD) First
-
-Every change MUST flow through:
-
-Requirements → Specification → Plan → Tasks → Tests → Implementation
-
-Implementation MUST NEVER bypass this process. When implementation conflicts with requirements,
-specifications, or plans, the planning documents are the source of truth.
-
-**Rationale**: A single authoritative pipeline keeps the project coherent and ensures the
-documented intent—not ad hoc code—governs the system.
-
 ## Mandatory Review Gates
 
 Every change MUST be reviewed against the following areas before it is considered complete. A
@@ -179,4 +163,4 @@ tool conflicts with it, this constitution prevails.
 - **Compliance review**: All work MUST be verified against these principles and the Mandatory
   Review Gates. Any complexity that deviates from Principle IV MUST be explicitly justified.
 
-**Version**: 1.0.0 | **Ratified**: 2026-05-31 | **Last Amended**: 2026-05-31
+**Version**: 2.0.0 | **Ratified**: 2026-05-31 | **Last Amended**: 2026-05-31

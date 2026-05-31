@@ -1,28 +1,28 @@
 <!--
 Sync Impact Report
 ==================
-Version change: 1.0.0 → 2.0.0
-Rationale: Consolidated principles to remove redundancy. Merged former "II. Plan
-Before Implementation" and "VII. Specification-Driven Development (SDD) First"
-into a single principle ("II. Specification-Driven Development"), since both
-governed the same Requirements→...→Implementation pipeline. The canonical
-pipeline is now stated once (in Development Workflow) and referenced elsewhere.
-Principle removal/redefinition makes this a MAJOR bump per the versioning policy.
+Version change: 2.0.0 → 2.1.0
+Rationale: Amendment to align the constitution with CLAUDE.md (the operating manual).
+Materially expands the Development Workflow (adds an explicit Tasks review, surfaces
+per-artifact Security review at Requirements and Specification per Principle V, and
+marks the TDD phases as per-task) and enriches the Mandatory Review Gate definitions
+with their operational checklists. No principles added or removed → MINOR bump per the
+versioning policy.
 
-Modified principles:
-  - II. Plan Before Implementation + VII. SDD First → II. Specification-Driven Development
-Removed principles:
-  - VII. Specification-Driven Development (SDD) First (folded into II)
-Renumbered:
-  - III→III, IV→IV, V→V, VI→VI (unchanged content; principle count 7 → 6)
+Modified sections:
+  - Mandatory Review Gates (gate definitions expanded; wording unified with CLAUDE.md)
+  - Development Workflow (Tasks review added; Requirements/Specification Security review
+    made explicit; "(per task)" added to the TDD phases)
+Added principles: N/A
+Removed principles: N/A
 Added sections: N/A
 Removed sections: N/A
 
 Templates requiring updates:
-  - .specify/templates/plan-template.md ✅ aligned (Constitution Check gate references this file)
-  - .specify/templates/spec-template.md ✅ aligned (Requirements + Success Criteria are mandatory)
-  - .specify/templates/tasks-template.md ✅ aligned — test tasks are mandatory and
-    residual "if included / if requested" hedges removed, consistent with Principle III.
+  - .specify/templates/plan-template.md ✅ aligned
+  - .specify/templates/spec-template.md ✅ aligned
+  - .specify/templates/tasks-template.md ✅ aligned
+  - CLAUDE.md ✅ aligned (gate definitions unified; workflow operationalized)
 
 Follow-up TODOs: None.
 -->
@@ -132,18 +132,36 @@ A future maintainer SHOULD be able to understand the project quickly.
 Every change MUST be reviewed against the following areas before it is considered complete. A
 change MUST NOT be merged or accepted until each gate has been reviewed:
 
-- **Security** — see Principle V.
-- **Testing** — coverage and TDD compliance, see Principle III.
-- **Architecture** — alignment with the approved plan and Principle IV (Simplicity).
-- **Performance** — acceptable resource and runtime behavior for the change.
-- **Logging** — adequate, non-sensitive logging to support debugging and observability.
+- **Security** — trust boundaries, input validation, authentication, authorization, secrets,
+  sensitive data, and OWASP risks (see Principle V).
+- **Testing** — coverage and TDD compliance; tests derive from `plan.md`; edge cases, error
+  handling, return values, and test independence (see Principle III).
+- **Architecture** — alignment with the approved plan and simplicity (Principle IV); separation
+  of concerns, maintainability, and no needless abstraction.
+- **Performance** — acceptable resource and runtime behavior; bottlenecks, expensive operations,
+  large datasets, and caching.
+- **Logging** — adequate, useful, consistent, non-sensitive logging that supports debugging and
+  observability.
 
 ## Development Workflow
 
 The authorized end-to-end workflow is:
 
-Requirements → Specification → Plan → Review → Tasks → Tests → Verify Expected Failure →
-Implementation → Verify Tests Pass → Mandatory Review Gates
+Requirements → Specification → Plan → Review → Tasks → Review → (per task) Tests → Verify
+Expected Failure → Implementation → Verify Tests Pass → Mandatory Review Gates
+
+Reviews fire as follows:
+
+- **Requirements** and **Specification** — Security review (Principle V).
+- **Plan** — Security, Performance, and Architecture review; planning artifacts MUST be approved
+  before any code is written.
+- **Tasks** — all five gates: every task testable with a corresponding test task, security- and
+  performance-sensitive work captured as explicit tasks, logging included in the relevant tasks,
+  and a simple breakdown.
+- **Mandatory Review Gates** — all five gates re-applied to the implementation before the change
+  is closed.
+
+Rules:
 
 - No phase may be skipped.
 - Tests MUST be observed failing before implementation begins.
@@ -163,4 +181,4 @@ tool conflicts with it, this constitution prevails.
 - **Compliance review**: All work MUST be verified against these principles and the Mandatory
   Review Gates. Any complexity that deviates from Principle IV MUST be explicitly justified.
 
-**Version**: 2.0.0 | **Ratified**: 2026-05-31 | **Last Amended**: 2026-05-31
+**Version**: 2.1.0 | **Ratified**: 2026-05-31 | **Last Amended**: 2026-05-31

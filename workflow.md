@@ -319,6 +319,8 @@ Review plan.md before implementation begins.
 
 ## Required Skill: Documentation & Logging
 
+(You can give it some logging examples) 
+
 ### Purpose
 
 Validate documentation and logging.

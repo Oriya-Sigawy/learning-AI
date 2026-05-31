@@ -1,18 +1,13 @@
 <!--
 Sync Impact Report
 ==================
-Version change: 2.0.0 → 2.1.0
-Rationale: Amendment to align the constitution with CLAUDE.md (the operating manual).
-Materially expands the Development Workflow (adds an explicit Tasks review, surfaces
-per-artifact Security review at Requirements and Specification per Principle V, and
-marks the TDD phases as per-task) and enriches the Mandatory Review Gate definitions
-with their operational checklists. No principles added or removed → MINOR bump per the
-versioning policy.
+Version change: 2.1.0 → 2.2.0
+Rationale: Adds the Testing review to the Plan phase (a testability check on plan.md) so the
+Development Workflow matches CLAUDE.md, which now fires Testing at the Plan gate. Materially
+expands workflow guidance; no principles added or removed → MINOR bump per the versioning policy.
 
 Modified sections:
-  - Mandatory Review Gates (gate definitions expanded; wording unified with CLAUDE.md)
-  - Development Workflow (Tasks review added; Requirements/Specification Security review
-    made explicit; "(per task)" added to the TDD phases)
+  - Development Workflow (Plan review now includes Testing — confirms the plan is testable)
 Added principles: N/A
 Removed principles: N/A
 Added sections: N/A
@@ -22,7 +17,7 @@ Templates requiring updates:
   - .specify/templates/plan-template.md ✅ aligned
   - .specify/templates/spec-template.md ✅ aligned
   - .specify/templates/tasks-template.md ✅ aligned
-  - CLAUDE.md ✅ aligned (gate definitions unified; workflow operationalized)
+  - CLAUDE.md ✅ aligned (Plan-phase gate now lists Testing)
 
 Follow-up TODOs: None.
 -->
@@ -153,8 +148,10 @@ Expected Failure → Implementation → Verify Tests Pass → Mandatory Review G
 Reviews fire as follows:
 
 - **Requirements** and **Specification** — Security review (Principle V).
-- **Plan** — Security, Performance, and Architecture review; planning artifacts MUST be approved
-  before any code is written.
+- **Plan** — Security, Performance, Architecture, and Testing review; the Testing review confirms
+  the plan is testable (every described behavior can be tested, edge and failure cases are
+  identifiable, success criteria are measurable). Planning artifacts MUST be approved before any
+  code is written.
 - **Tasks** — all five gates: every task testable with a corresponding test task, security- and
   performance-sensitive work captured as explicit tasks, logging included in the relevant tasks,
   and a simple breakdown.
@@ -181,4 +178,4 @@ tool conflicts with it, this constitution prevails.
 - **Compliance review**: All work MUST be verified against these principles and the Mandatory
   Review Gates. Any complexity that deviates from Principle IV MUST be explicitly justified.
 
-**Version**: 2.1.0 | **Ratified**: 2026-05-31 | **Last Amended**: 2026-05-31
+**Version**: 2.2.0 | **Ratified**: 2026-05-31 | **Last Amended**: 2026-05-31

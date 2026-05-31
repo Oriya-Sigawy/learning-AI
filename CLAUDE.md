@@ -60,8 +60,10 @@ in order; run the listed gates before moving on.
 
 1. **Requirements** (`requirements.md`) → Security.
 2. **Specification** (`spec.md`) → Security.
-3. **Plan** (`plan.md`) → Security, Performance, Architecture. Resolve findings, update
-   `plan.md`, then **get the developer's approval before any code is written.**
+3. **Plan** (`plan.md`) → Security, Performance, Architecture, Testing (the plan is
+   testable: every described behavior can be tested, edge and failure cases are
+   identifiable, success criteria are measurable). Resolve findings, update `plan.md`,
+   then **get the developer's approval before any code is written.**
 4. **Tasks** (`tasks.md`) → all five gates. Confirm every task is testable and has a
    test task; security- and performance-sensitive work is captured as explicit tasks;
    logging is included in the relevant tasks; the breakdown is simple. Update `tasks.md`.

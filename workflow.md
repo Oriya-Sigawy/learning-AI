@@ -1,3 +1,10 @@
+ - This file contains notes for how to do this project, based on what I learned in the last few days.
+ - This file is not a replacement for CLAUDE.md, plan.md or any md file.
+ - Sorry for the mess.  
+   
+
+
+   
 # CLAUDE_PROJECT_WORKFLOW.md
 
 ## Purpose

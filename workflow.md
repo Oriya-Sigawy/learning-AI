@@ -16,6 +16,18 @@ The primary source of truth is:
 
 Code is an implementation of these documents and must remain aligned with them.
 
+## Test-Driven Development
+
+This project follows Test-Driven Development (TDD).
+
+Rules:
+
+- Tests are written before implementation.
+- Tests describe expected behavior, not implementation details.
+- No production code may be written until the relevant tests exist.
+- Every planned behavior must be covered by tests.
+- New functionality requires tests before implementation.
+
 ---
 
 # PHASE 1 - PROJECT SETUP
@@ -83,6 +95,19 @@ Before implementing anything:
 
 If any of these are missing, stop and explain what is missing.
 
+Before implementing any task:
+
+1. Read plan.md.
+2. Identify the behavior being implemented.
+3. Verify tests exist for that behavior.
+4. Create or update tests based on plan.md.
+5. Verify tests fail for the expected reason.
+6. Implement the code.
+7. Verify tests pass.
+
+Tests must be derived from plan.md and requirements, not from implementation details.
+Never implement behavior before tests exist.
+
 ---
 
 ## Step 3 - Create spec-kit.constitution
@@ -97,7 +122,7 @@ Define project principles:
 * Security by default.
 * Maintainability over cleverness.
 
-## SDD First
+### SDD First
 
 This project follows Specification-Driven Development.
 
@@ -167,6 +192,24 @@ Validate testing quality.
 
 * Testing implementation details
 * Overly fragile tests
+* Creating unnecessary tests
+
+### When to use
+
+Review:
+
+- requirements.md
+- spec.md
+- plan.md
+- relevant test files
+
+### What to check 
+- Tests are derived from plan.md.
+- Tests validate planned behavior, not implementation details.
+- Every behavior described in plan.md has corresponding tests.
+- Edge cases identified in plan.md are covered.
+- Failure scenarios identified in plan.md are covered.
+- Tests would remain valid after refactoring.
 
 ---
 
@@ -190,6 +233,27 @@ Validate security.
 * Security assumptions
 * Hardcoded secrets
 
+### When to use
+
+Review:
+
+- requirements.md
+- spec.md
+- plan.md
+- implementation code
+
+### What To Check In plan.md (also add what to check generaly)
+
+- Trust boundaries are identified.
+- Authentication requirements exist.
+- Authorization requirements exist.
+- Sensitive data handling is defined.
+- Secrets management is defined.
+- Logging does not expose sensitive data.
+- External integrations are secured.
+- OWASP Top 10 risks are considered.
+- Security requirements are testable.
+
 ---
 
 ## Required Skill: Performance
@@ -209,6 +273,14 @@ Validate performance.
 
 * Premature optimization
 
+### what to check in plan.md
+
+- Potential bottlenecks identified.
+- Large datasets considered.
+- Expensive operations identified.
+- Caching needs identified.
+- Performance risks documented.
+
 ---
 
 ## Required Skill: Architecture
@@ -216,6 +288,10 @@ Validate performance.
 ### Purpose
 
 Validate architecture.
+
+### Primary Target
+
+Review plan.md before implementation begins.
 
 ### Check
 
@@ -228,6 +304,16 @@ Validate architecture.
 ### Avoid
 
 * Overengineering
+
+### What to check in plan.md
+
+- Complexity is justified.
+- Components are well separated.
+- Responsibilities are clear.
+- Architecture is understandable.
+- Architecture supports testing.
+- Architecture supports maintenance.
+- No unnecessary abstractions exist.
 
 ---
 
@@ -715,8 +801,10 @@ Assignment
 → Plan
 → Plan Review
 → Tasks
-→ Tests
+→ Write Tests
+→ Verify Tests Fail
 → Implementation
+→ Verify Tests Pass
 → Final Review
 → README
 → Git Push

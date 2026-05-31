@@ -82,6 +82,7 @@ Before implementing anything:
 6. Only then begin implementation.
 
 If any of these are missing, stop and explain what is missing.
+
 ---
 
 ## Step 3 - Create spec-kit.constitution
